@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantTableBookingApp.API", "RestaurantTableBookingAppAPI\RestaurantTableBookingApp.API.csproj", "{CA2E1BC9-2B81-4C43-BA3A-49584C0FE907}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantTableBookingApp.Api", "RestaurantTableBookingAppAPI\RestaurantTableBookingApp.Api.csproj", "{CA2E1BC9-2B81-4C43-BA3A-49584C0FE907}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantTableBookingApp.Core", "RestaurantTableBookingApp.Core\RestaurantTableBookingApp.Core.csproj", "{F3870072-778F-4608-BAF5-F2AC4A29BBAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantTableBookingApp.Core", "RestaurantTableBookingApp.Core\RestaurantTableBookingApp.Core.csproj", "{F3870072-778F-4608-BAF5-F2AC4A29BBAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantTableBookingApp.Data", "RestaurantTableBookingApp.Data\RestaurantTableBookingApp.Data.csproj", "{937B1948-81FC-4B14-8C07-3A31E94988A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantTableBookingApp.Data", "RestaurantTableBookingApp.Data\RestaurantTableBookingApp.Data.csproj", "{937B1948-81FC-4B14-8C07-3A31E94988A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantTableBookingApp.Service", "RestaurantTableBookingApp.Service\RestaurantTableBookingApp.Service.csproj", "{1AED6E23-1C31-482E-8473-A390AEAF72B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantTableBookingApp.Service", "RestaurantTableBookingApp.Service\RestaurantTableBookingApp.Service.csproj", "{1AED6E23-1C31-482E-8473-A390AEAF72B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

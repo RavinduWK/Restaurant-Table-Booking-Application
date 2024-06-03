@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace RestaurantTableBookingApp.Data;
 
-public partial class RestaurantTableBookingContext : DbContext
+public partial class RestaurantTableBookingDbContext : DbContext
 {
     
-    public RestaurantTableBookingContext(DbContextOptions<RestaurantTableBookingContext> options): base(options)
+    public RestaurantTableBookingDbContext(DbContextOptions<RestaurantTableBookingDbContext> options): base(options)
     { }
 
     public virtual DbSet<DiningTable> DiningTables { get; set; }
