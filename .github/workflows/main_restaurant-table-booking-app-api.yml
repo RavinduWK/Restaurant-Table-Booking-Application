@@ -15,7 +15,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: Restaurant-Table-Booking-Application\API\RestaurantTableBookingApp.API
+        working-directory: API\RestaurantTableBookingApp.API
 
     steps:
       - uses: actions/checkout@v4
