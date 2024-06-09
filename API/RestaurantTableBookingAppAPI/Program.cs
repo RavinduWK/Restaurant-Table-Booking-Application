@@ -52,10 +52,22 @@ namespace RestaurantTableBookingAppAPI
 
                 builder.Services.AddControllers();
                 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+                // In production, modify this with the actual domains you want to allow
+                builder.Services.AddCors(o => o.AddPolicy("default", builder =>
+                {
+                    builder.AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
+                }));
+
+
                 builder.Services.AddEndpointsApiExplorer();
                 builder.Services.AddSwaggerGen();
 
                 var app = builder.Build();
+
+                app.UseCors("default");
 
                 app.UseExceptionHandler(errorApp =>
                 {
