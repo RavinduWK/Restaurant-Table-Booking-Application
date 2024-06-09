@@ -27,14 +27,14 @@ namespace RestaurantTableBookingApp.Service.Services
             return restaurantRepository.GetRestaurantBranchesByRestaurantIdAsync(restaurantId);
         }
 
-        public Task<IEnumerable<DiningTableWithTimeSlotsModel>> GetDiningTablesByBranchAsunc(int branchId, DateTime date)
-        {
-            return restaurantRepository.GetDiningTablesByBranchAsync(branchId, date);
-        }
-
-        public Task<IEnumerable<DiningTableWithTimeSlotsModel>> GetDiningTablesByBranchAsunc(int branchId)
+        public Task<IEnumerable<DiningTableWithTimeSlotsModel>> GetDiningTablesByBranchAsync(int branchId)
         {
             return restaurantRepository.GetDiningTablesByBranchAsync(branchId);
+        }
+
+        public Task<IEnumerable<DiningTableWithTimeSlotsModel>> GetDiningTablesByBranchAndDateAsync(int branchId, DateTime date)
+        {
+            return restaurantRepository.GetDiningTablesByBranchAndDateAsync(branchId, date);
         }
     }
 }

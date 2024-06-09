@@ -11,8 +11,8 @@ namespace RestaurantTableBookingApp.Service.IServices
     {
         Task<List<RestaurantModel>> GetAllRestaurantsAsync();
         Task<IEnumerable<RestaurantBranchModel>> GetAllRestaurantBranchesByRestaurantIdAsync(int restaurantId);
-        Task<IEnumerable<DiningTableWithTimeSlotsModel>> GetDiningTablesByBranchAsunc(int branchId, DateTime date);
-        Task<IEnumerable<DiningTableWithTimeSlotsModel>> GetDiningTablesByBranchAsunc(int branchId);
+        Task<IEnumerable<DiningTableWithTimeSlotsModel>> GetDiningTablesByBranchAsync(int branchId);
+        Task<IEnumerable<DiningTableWithTimeSlotsModel>> GetDiningTablesByBranchAndDateAsync(int branchId, DateTime date);
 
     }
 }
