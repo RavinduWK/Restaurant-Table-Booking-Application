@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RestaurantTableBookingApp.Core.ViewModels;
 using RestaurantTableBookingApp.Service.IServices;
+using RestaurantTableBookingApp.Service.Services;
 
 namespace RestaurantTableBookingApp.API.Controllers
 {
@@ -11,10 +12,12 @@ namespace RestaurantTableBookingApp.API.Controllers
     public class RestaurantController : ControllerBase
     {
         private readonly IRestaurantService _restaurantService;
+        private readonly IReservationService _reservationService;
 
-        public RestaurantController(IRestaurantService restaurantService)
+        public RestaurantController(IRestaurantService restaurantService, IReservationService reservationService)
         {
-            _restaurantService = restaurantService;   
+            _restaurantService = restaurantService;
+            _reservationService = reservationService;
         }
 
         [HttpGet("restaurants")]
@@ -61,41 +64,47 @@ namespace RestaurantTableBookingApp.API.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> CreateReservationAsync(ReservationModel reservation)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
-            }
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
 
-            // Check if the selected time slot exists
-            var timeSlot = await reservationService.TimeSlotIdExistAsync(reservation.TimeSlotId);
-            if (!timeSlot)
+                // Check if the selected time slot exists
+                var timeSlot = await _reservationService.TimeSlotIdExistAsync(reservation.TimeSlotId);
+                if (!timeSlot)
+                {
+                    return NotFound("Selected time slot not found.");
+                }
+
+                // Create a new reservation
+                var newReservation = new ReservationModel
+                {
+                    UserId = reservation.UserId,
+                    FirstName = reservation.FirstName,
+                    LastName = reservation.LastName,
+                    EmailId = reservation.EmailId,
+                    PhoneNumber = reservation.PhoneNumber,
+                    TimeSlotId = reservation.TimeSlotId,
+                    ReservationDate = reservation.ReservationDate,
+                    ReservationStatus = reservation.ReservationStatus
+                };
+
+                var createdReservation = await _reservationService.CreateOrUpdateReservationAsync(newReservation);
+                //await emailNotification.SendBookingEmailAsync(reservation);
+
+                return new CreatedResult("GetReservation", new { id = createdReservation });
+            }catch (Exception ex)
             {
-                return NotFound("Selected time slot not found.");
-            }
-
-            // Create a new reservation
-            var newReservation = new ReservationModel
-            {
-                UserId = reservation.UserId,
-                FirstName = reservation.FirstName,
-                LastName = reservation.LastName,
-                EmailId = reservation.EmailId,
-                PhoneNumber = reservation.PhoneNumber,
-                TimeSlotId = reservation.TimeSlotId,
-                ReservationDate = reservation.ReservationDate,
-                ReservationStatus = reservation.ReservationStatus
-            };
-
-            var createdReservation = await reservationService.CreateOrUpdateReservationAsync(newReservation);
-            await emailNotification.SendBookingEmailAsync(reservation);
-
-            return new CreatedResult("GetReservation", new { id = createdReservation });
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }           
         }
 
         [HttpGet("getreservations")]
         public async Task<ActionResult> GetReservationDetails(int branchId, DateTime date)
         {
-            var reservations = await reservationService.GetReservationDetails();
+            var reservations = await _reservationService.GetReservationDetails();
 
             return Ok(reservations);
         }

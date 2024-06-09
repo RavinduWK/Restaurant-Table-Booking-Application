@@ -74,7 +74,8 @@ namespace RestaurantTableBookingApp.Data.Repositories
                 UserId = existingUser.Id,
                 TimeSlotId = reservation.TimeSlotId,
                 ReservationDate = reservation.ReservationDate.Date.Add(reservationTime),
-                ReservationStatus = reservation.ReservationStatus
+                ReservationStatus = reservation.ReservationStatus,
+                ReminderSent = true
             };
 
             _dbContext.Reservations.Add(newReservation);
@@ -82,6 +83,7 @@ namespace RestaurantTableBookingApp.Data.Repositories
 
             return newReservation.Id;
         }
+        
         public async Task<TimeSlot> GetTimeSlotByIdAsync(int timeSlotId)
         {
             var timeSlot = await _dbContext.TimeSlots.FindAsync(timeSlotId);

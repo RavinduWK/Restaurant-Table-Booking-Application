@@ -1,5 +1,7 @@
 ﻿using RestaurantTableBookingApp.Core.ViewModels;
 using System;
+using RestaurantTableBookingApp.Data.IRepositories;
+using RestaurantTableBookingApp.Service.IServices;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
