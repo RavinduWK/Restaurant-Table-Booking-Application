@@ -85,6 +85,7 @@ namespace RestaurantTableBookingAppAPI
                 builder.Services.AddScoped<IRestaurantService, RestaurantService>();
                 builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
                 builder.Services.AddScoped<IReservationService, ReservationService>();
+                builder.Services.AddScoped<IEmailNotificationService, EmailNotificationService>();
 
 
                 builder.Services.AddDbContext<RestaurantTableBookingDbContext>(options =>

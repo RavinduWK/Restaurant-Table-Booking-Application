@@ -18,13 +18,15 @@ namespace RestaurantTableBookingApp.Api.Controllers
         private readonly IHttpContextAccessor _contextAccessor;
         private ClaimsPrincipal _currentPrincipal;
         private string _currentPrincipalId = string.Empty;
+        private readonly IEmailNotificationService _emailNotificationservice;
 
 
-        public ReservationController(IReservationService reservationService, IHttpContextAccessor contextAccessor)
+        public ReservationController(IReservationService reservationService, IHttpContextAccessor contextAccessor, IEmailNotificationService emailNotificationService)
         {
             this.reservationService = reservationService;
             _contextAccessor = contextAccessor;
             _currentPrincipal = GetCurrentClaimsPrincipal();
+            _emailNotificationservice = emailNotificationService;
 
             if (!IsAppOnlyToken() && _currentPrincipal != null)
             {
@@ -59,6 +61,7 @@ namespace RestaurantTableBookingApp.Api.Controllers
                 return NotFound("Selected time slot not found.");
             }
             var response = await reservationService.CheckInReservationAsync(reservation);
+            await _emailNotificationservice.SendCheckInEmailAsync(reservation);
             return Ok(response);
         }
 
