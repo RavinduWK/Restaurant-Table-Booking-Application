@@ -14,11 +14,13 @@ namespace RestaurantTableBookingApp.API.Controllers
     {
         private readonly IRestaurantService _restaurantService;
         private readonly IReservationService _reservationService;
+        private readonly IEmailNotificationService _emailNotification;
 
-        public RestaurantController(IRestaurantService restaurantService, IReservationService reservationService)
+        public RestaurantController(IRestaurantService restaurantService, IReservationService reservationService, IEmailNotificationService emailNotification)
         {
             _restaurantService = restaurantService;
             _reservationService = reservationService;
+            _emailNotification = emailNotification;
         }
 
         [HttpGet("restaurants")]
@@ -93,7 +95,7 @@ namespace RestaurantTableBookingApp.API.Controllers
                 };
 
                 var createdReservation = await _reservationService.CreateOrUpdateReservationAsync(newReservation);
-                //await emailNotification.SendBookingEmailAsync(reservation);
+                await _emailNotification.SendBookingEmailAsync(reservation);
 
                 return new CreatedResult("GetReservation", new { id = createdReservation });
             }catch (Exception ex)
