@@ -9,6 +9,7 @@ namespace RestaurantTableBookingApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous] //The end points in this controller should be used without logging in
     public class RestaurantController : ControllerBase
     {
         private readonly IRestaurantService _restaurantService;
