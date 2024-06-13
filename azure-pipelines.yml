@@ -7,22 +7,30 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
 
 variables:
   buildConfiguration: 'prod'
 
 steps:
+- checkout: self  # Ensure the repo is checked out
+  displayName: 'Checkout code'
+
 - script: |
     npm install
+  displayName: 'Install dependencies'
+  workingDirectory: $(Build.SourcesDirectory)/web
+
+- script: |
     npm run build --prod
   displayName: 'Build Angular App'
   workingDirectory: $(Build.SourcesDirectory)/web
 
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: '$(Build.SourcesDirectory)/web/dist'
+    pathToPublish: '$(Build.SourcesDirectory)/web/dist'
     artifactName: 'angular-app'
   displayName: 'Publish Build Artifacts'
+
 
 
