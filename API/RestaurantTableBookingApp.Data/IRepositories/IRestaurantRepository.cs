@@ -1,4 +1,5 @@
-﻿using RestaurantTableBookingApp.Core.ViewModels;
+﻿using RestaurantTableBookingApp.Core;
+using RestaurantTableBookingApp.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,9 @@ namespace RestaurantTableBookingApp.Data.IRepositories
     {
         Task<List<RestaurantModel>> GetAllRestaurantAsync();
         Task<IEnumerable<RestaurantBranchModel>> GetRestaurantBranchesByRestaurantIdAsync(int restaurantId);
-        Task<IEnumerable<DiningTableWithTimeSlotsModel>> GetDiningTablesByBranchAsync(int branchId, DateTime date);
         Task<IEnumerable<DiningTableWithTimeSlotsModel>> GetDiningTablesByBranchAsync(int branchId);
+        Task<IEnumerable<DiningTableWithTimeSlotsModel>> GetDiningTablesByBranchAndDateAsync(int branchId, DateTime date);
+        Task<RestaurantReservationDetails> GetRestaurantReservationDetailsAsync(int timeSlotId);
+        Task<User?> GetUserAsync(string emailId);
     }
 }
