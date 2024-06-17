@@ -1,5 +1,11 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { Claim, DiningTable, ReserveTable, Restaurant, RestaurantBranch } from '../models/restaurants.model';
+import {
+  Claim,
+  DiningTable,
+  ReserveTable,
+  Restaurant,
+  RestaurantBranch,
+} from '../models/restaurants.model';
 import { AppSampleData } from '../shared/constants/temp-data';
 import { RestaurantService } from '../service/restaurant.service';
 import { DatePipe } from '@angular/common';
@@ -7,18 +13,19 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ReservationService } from '../service/reservation.service';
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from '../service/login.service';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-search-restaurants',
   templateUrl: './search-restaurants.component.html',
-  styleUrls: ['./search-restaurants.component.css']
+  styleUrls: ['./search-restaurants.component.css'],
 })
 export class SearchRestaurantsComponent implements OnInit {
   headingTitle = 'Search Restaurants';
   searchTerm: string = ''; // The search term entered by the user
   restaurants: Restaurant[] = [];
   filteredRestaurants: Restaurant[] = [];
-  userEmailId='';
+  userEmailId = '';
 
   selectRestaurant!: Restaurant | undefined;
 
@@ -37,13 +44,18 @@ export class SearchRestaurantsComponent implements OnInit {
   modalRef?: BsModalRef;
   config = {
     backdrop: true,
-    ignoreBackdropClick: false
+    ignoreBackdropClick: false,
   };
 
-  constructor(private restaurantService: RestaurantService, private datePipe: DatePipe,
-    private modalService: BsModalService, private reservationService: ReservationService,
+  constructor(
+    private restaurantService: RestaurantService,
+    private datePipe: DatePipe,
+    private modalService: BsModalService,
+    private reservationService: ReservationService,
     private toastr: ToastrService,
-    private loginService: LoginService) {
+    private loginService: LoginService,
+    private authService: AuthService
+  ) {
     // this.restaurants = AppSampleData.restaurants;
     // this.restaurantBranches = AppSampleData.restaurantBranches;
     // this.filteredRestaurants = AppSampleData.restaurants;
@@ -51,7 +63,7 @@ export class SearchRestaurantsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginService.claims$.subscribe((c) => {
-      this.claims = c;      
+      this.claims = c;
     });
     this.getRestaurants();
   }
@@ -61,7 +73,7 @@ export class SearchRestaurantsComponent implements OnInit {
   }
 
   getRestaurants() {
-    this.restaurantService.GetRestaurants().subscribe(s => {
+    this.restaurantService.GetRestaurants().subscribe((s) => {
       this.restaurants = s;
       this.filteredRestaurants = s;
       this.selectRestaurant = s[0];
@@ -71,10 +83,12 @@ export class SearchRestaurantsComponent implements OnInit {
   }
 
   getRestaurantBranches() {
-    this.restaurantService.GetRestaurantBranches(this.selectedRestaurantId).subscribe(s => {
-      this.restaurantBranches = s;
-      this.filterBranches(this.selectedRestaurantId);
-    });
+    this.restaurantService
+      .GetRestaurantBranches(this.selectedRestaurantId)
+      .subscribe((s) => {
+        this.restaurantBranches = s;
+        this.filterBranches(this.selectedRestaurantId);
+      });
   }
 
   onBranchSelected(id: number) {
@@ -83,27 +97,29 @@ export class SearchRestaurantsComponent implements OnInit {
   }
 
   getDiningTables() {
-    this.restaurantService.GetDiningTablesByBranch(this.selectedBranchId).subscribe(s => {
-      this.branchDiningTables = s;
-      this.getDistinctReservationDays();
-    });
+    this.restaurantService
+      .GetDiningTablesByBranch(this.selectedBranchId)
+      .subscribe((s) => {
+        this.branchDiningTables = s;
+        this.getDistinctReservationDays();
+      });
   }
 
   onUserBookinginfoComplete(table: ReserveTable) {
     this.modalRef?.hide();
-    this.toastr.info('We have sent your request','Initiated')
-    this.reservationService.CreateReservation(table).subscribe(data => {
-      this.toastr.success('Your reservation has been confirmed!','Success')
+    this.toastr.info('We have sent your request', 'Initiated');
+    this.reservationService.CreateReservation(table).subscribe((data) => {
+      this.toastr.success('Your reservation has been confirmed!', 'Success');
       this.reservationSuccess = true;
       this.reset();
-    })
-  };
+    });
+  }
 
   reset() {
     this.selectedRestaurantId = -1;
     this.selectedBranchId = -1;
-    this.bookingTables=[];
-    this.distinctReservationDays=[];
+    this.bookingTables = [];
+    this.distinctReservationDays = [];
     this.selectRestaurant = undefined;
   }
 
@@ -158,7 +174,10 @@ export class SearchRestaurantsComponent implements OnInit {
     const uniqueReservationDays: string[] = [];
 
     this.branchDiningTables.forEach((reservation) => {
-      const formattedDate = this.datePipe.transform(reservation.reservationDay, 'MM-dd-yyyy');
+      const formattedDate = this.datePipe.transform(
+        reservation.reservationDay,
+        'MM-dd-yyyy'
+      );
       if (formattedDate && !uniqueReservationDays.includes(formattedDate)) {
         uniqueReservationDays.push(formattedDate);
       }
@@ -170,7 +189,7 @@ export class SearchRestaurantsComponent implements OnInit {
   // Function to filter branches based on the selected restaurant
   filterBranches(id: number): void {
     this.reservationSuccess = false;
-    this.selectRestaurant = this.restaurants.find(f => f.id == id);
+    this.selectRestaurant = this.restaurants.find((f) => f.id == id);
     this.filteredBranches = this.restaurantBranches.filter(
       (branch) => +branch.restaurantId === +id
     );
@@ -190,12 +209,19 @@ export class SearchRestaurantsComponent implements OnInit {
     );
   }
 
-  checkInReservation(table: DiningTable){
-    this.toastr.info('We have sent your check in request','Initiated')
-    this.reservationService.UpdateReservation(table).subscribe(data => {
-      this.toastr.success('You have checked in and now it is time enjoy your meal!','Success')
+  checkInReservation(table: DiningTable) {
+    this.toastr.info('We have sent your check in request', 'Initiated');
+    this.reservationService.UpdateReservation(table).subscribe((data) => {
+      this.toastr.success(
+        'You have checked in and now it is time enjoy your meal!',
+        'Success'
+      );
       this.reservationSuccess = true;
       this.reset();
-    })
+    });
+  }
+
+  isAdminOrSuperAdmin(): boolean {
+    return this.authService.isAdminOrSuperAdmin();
   }
 }
