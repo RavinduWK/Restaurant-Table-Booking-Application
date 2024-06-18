@@ -14,9 +14,13 @@ public partial class Restaurant
     [MaxLength(100)]
     public string Name { get; set; } = null!;
 
+    public string? Description { get; set; }
+
     [Required]
     [MaxLength(200)]
     public string Address { get; set; } = null!;
+
+    public string? OpenTime { get; set; }
 
     [MaxLength(20)]
     public string? Phone { get; set; }
