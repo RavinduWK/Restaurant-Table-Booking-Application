@@ -20,4 +20,9 @@
     <ProjectReference Include="..\RestaurantTableBookingApp.Core\RestaurantTableBookingApp.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+
 </Project>

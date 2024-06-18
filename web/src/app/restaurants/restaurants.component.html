@@ -1,0 +1,74 @@
+<!-- ======= restaurants Section ======= -->
+<section id="restaurants" class="restaurants section-bg">
+  <div class="container" data-aos="fade-up">
+    <div class="section-header">
+      <h2>restaurants</h2>
+      <p>Our <span>Registered</span> Restaurants</p>
+    </div>
+
+    <!--Content-->
+    <div class="search-container">
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Search Restaurants..."
+        id="userEmail"
+        [(ngModel)]="selectedRestaurant"
+      />
+      <button class="search-button">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+
+    <h4>
+      Please select a restaurant to view it's Menu, Chefs, Events and much more
+    </h4>
+
+    <!--Restaurant tiles-->
+    <div class="restaurant-tiles row gy-4">
+      <div
+        class="col-lg-4 col-md-6 d-flex align-items-stretch"
+        data-aos="fade-up"
+        data-aos-delay="100"
+        *ngFor="let restaurant of restaurants"
+      >
+        <div class="restaurant-member">
+          <div class="member-img">
+            <img [src]="restaurant.imageUrl" class="img-fluid" alt="" />
+            <div class="social">
+              <a href=""><i class="bi bi-twitter"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h4>{{ restaurant.name }}</h4>
+            <span>Sri Lanka</span>
+            <p class="description">
+              {{ restaurant.description }}
+            </p>
+            <hr />
+            <div class="details">
+              <p class="address">
+                <i class="fa fa-map-marker"></i>{{ restaurant.address }}
+              </p>
+              <p class="hours">
+                <i class="fa fa-clock"></i> Open: {{ restaurant.openTime }}
+              </p>
+            </div>
+            <button
+              type="button"
+              class="btn-details"
+              (click)="navigateToDetailsPage(restaurant.id)"
+            >
+              View Details
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- End restaurants Member -->
+    </div>
+  </div>
+</section>
+<!-- End restaurants Section -->

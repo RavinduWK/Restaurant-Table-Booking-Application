@@ -20,7 +20,9 @@ namespace RestaurantTableBookingApp.Data.Repositories
                 {
                     Id = r.Id,
                     Name = r.Name,
+                    Description = r.Description,
                     Address = r.Address,
+                    OpenTime = r.OpenTime,
                     Phone = r.Phone,
                     Email = r.Email,
                     ImageUrl = r.ImageUrl,
