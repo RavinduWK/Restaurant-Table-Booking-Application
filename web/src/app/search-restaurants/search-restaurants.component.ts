@@ -79,6 +79,7 @@ export class SearchRestaurantsComponent implements OnInit {
       this.selectRestaurant = s[0];
       this.selectedRestaurantId = this.selectRestaurant.id;
       this.getRestaurantBranches();
+      console.log('Restaurants', this.restaurants);
     });
   }
 

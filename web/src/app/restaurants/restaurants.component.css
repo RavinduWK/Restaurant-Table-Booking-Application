@@ -1,0 +1,171 @@
+.restaurants .restaurant-member {
+  overflow: hidden;
+  text-align: center;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0px 0 30px rgba(55, 55, 63, 0.08);
+  transition: 0.3s;
+}
+
+.restaurants .restaurant-member .member-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.restaurants .restaurant-member .member-img:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background: url(../../assets/img/team-shape.svg) no-repeat center bottom;
+  background-size: contain;
+  z-index: 1;
+}
+
+.restaurants .restaurant-member .social {
+  position: absolute;
+  right: -100%;
+  top: 30px;
+  opacity: 0;
+  border-radius: 4px;
+  transition: 0.5s;
+  background: rgba(255, 255, 255, 0.3);
+  z-index: 2;
+}
+
+.restaurants .restaurant-member .social a {
+  transition: color 0.3s;
+  color: rgba(55, 55, 63, 0.4);
+  margin: 15px 12px;
+  display: block;
+  line-height: 0;
+  text-align: center;
+}
+
+.restaurants .restaurant-member .social a:hover {
+  color: rgba(55, 55, 63, 0.9);
+}
+
+.restaurants .restaurant-member .social i {
+  font-size: 18px;
+}
+
+.restaurants .restaurant-member .member-info {
+  padding: 10px 15px 20px 15px;
+}
+
+.restaurants .restaurant-member .member-info h4 {
+  font-weight: 700;
+  margin-bottom: 5px;
+  font-size: 20px;
+  color: var(--color-secondary);
+}
+
+.restaurants .restaurant-member .member-info span {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(33, 37, 41, 0.4);
+}
+
+.restaurants .restaurant-member .member-info p {
+  font-style: italic;
+  font-size: 14px;
+  padding-top: 15px;
+  line-height: 26px;
+  color: rgba(33, 37, 41, 0.7);
+}
+
+.restaurants .restaurant-member .member-info hr {
+  border: none;
+  border-top: 3px solid rgb(17, 19, 20);
+  margin: 20px auto 6px auto;
+}
+
+.restaurants .restaurant-member .member-info .details {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.restaurants .restaurant-member .member-info .details i {
+  padding: 0 5px;
+}
+
+.restaurants .restaurant-member .member-info .details p {
+  margin-bottom: 2px;
+  padding-top: 5px;
+  font-style: normal;
+  font-size: 15px;
+  line-height: 30px;
+  color: rgba(33, 37, 41, 0.8);
+}
+
+.restaurants .restaurant-member .member-info .btn-details {
+  background-color: var(--color-secondary);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 18px;
+  margin-bottom: 20px;
+}
+
+.restaurants .restaurant-member .member-info .btn-details:hover {
+  background-color: white;
+  color: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
+}
+
+.restaurants .restaurant-member:hover {
+  transform: scale(1.08);
+  box-shadow: 0px 0 30px rgba(55, 55, 63, 0.15);
+}
+
+.restaurants .restaurant-member:hover .social {
+  right: 8px;
+  opacity: 1;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  border: 2px solid rgba(55, 55, 63, 0.6);
+  background-color: white;
+  border-radius: 20px;
+  padding: 5px 10px;
+  max-width: 800px;
+  margin: auto;
+  margin-bottom: 40px;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 20px 0 0 20px;
+}
+
+.search-button {
+  background: none;
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: #333;
+  font-size: 16px;
+}
+
+.search-button:hover {
+  color: #555;
+}
+
+.restaurant-tiles {
+  margin-top: 20px;
+}

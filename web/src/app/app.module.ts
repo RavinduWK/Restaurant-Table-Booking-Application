@@ -25,12 +25,29 @@ import { CollectUserInfoComponent } from './collect-user-info/collect-user-info.
 import { HttpInterceptorService } from './service/spinner-interceptor.service';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MSAL_GUARD_CONFIG, MSAL_INSTANCE, MSAL_INTERCEPTOR_CONFIG, MsalBroadcastService, MsalGuard, MsalGuardConfiguration, MsalInterceptor, MsalInterceptorConfiguration, MsalRedirectComponent, MsalService, ProtectedResourceScopes } from '@azure/msal-angular';
-import { IPublicClientApplication, PublicClientApplication, InteractionType } from '@azure/msal-browser';
+import {
+  MSAL_GUARD_CONFIG,
+  MSAL_INSTANCE,
+  MSAL_INTERCEPTOR_CONFIG,
+  MsalBroadcastService,
+  MsalGuard,
+  MsalGuardConfiguration,
+  MsalInterceptor,
+  MsalInterceptorConfiguration,
+  MsalRedirectComponent,
+  MsalService,
+  ProtectedResourceScopes,
+} from '@azure/msal-angular';
+import {
+  IPublicClientApplication,
+  PublicClientApplication,
+  InteractionType,
+} from '@azure/msal-browser';
 import { msalConfig, protectedResources, loginRequest } from './auth-config';
 import { ClaimsDetailsComponent } from './claims-details/claims-details.component';
 import { ReservationDetailsComponent } from './reservation-details/reservation-details.component';
-
+import { RestaurantsComponent } from './restaurants/restaurants.component';
+import { RestaurantDetailsComponent } from './restaurant-details/restaurant-details.component';
 
 /**
  * Here we pass the configuration parameters to create an MSAL instance.
@@ -41,49 +58,51 @@ export function MSALInstanceFactory(): IPublicClientApplication {
 }
 
 /**
-* MSAL Angular will automatically retrieve tokens for resources
-* added to protectedResourceMap. For more info, visit:
-* https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/docs/v2-docs/initialization.md#get-tokens-for-web-api-calls
-*/
+ * MSAL Angular will automatically retrieve tokens for resources
+ * added to protectedResourceMap. For more info, visit:
+ * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/docs/v2-docs/initialization.md#get-tokens-for-web-api-calls
+ */
 export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
-  const protectedResourceMap = new Map<string, Array<string | ProtectedResourceScopes> | null>();
+  const protectedResourceMap = new Map<
+    string,
+    Array<string | ProtectedResourceScopes> | null
+  >();
 
   protectedResourceMap.set(protectedResources.api.endpoint, [
-      {
-          httpMethod: 'GET',
-          scopes: [...protectedResources.api.scopes.read]
-      },
-      {
-          httpMethod: 'POST',
-          scopes: [...protectedResources.api.scopes.write]
-      },
-      {
-          httpMethod: 'PUT',
-          scopes: [...protectedResources.api.scopes.write]
-      },
-      {
-          httpMethod: 'DELETE',
-          scopes: [...protectedResources.api.scopes.write]
-      }
+    {
+      httpMethod: 'GET',
+      scopes: [...protectedResources.api.scopes.read],
+    },
+    {
+      httpMethod: 'POST',
+      scopes: [...protectedResources.api.scopes.write],
+    },
+    {
+      httpMethod: 'PUT',
+      scopes: [...protectedResources.api.scopes.write],
+    },
+    {
+      httpMethod: 'DELETE',
+      scopes: [...protectedResources.api.scopes.write],
+    },
   ]);
 
   return {
-      interactionType: InteractionType.Popup,
-      protectedResourceMap,
+    interactionType: InteractionType.Popup,
+    protectedResourceMap,
   };
 }
 
 /**
-* Set your default interaction type for MSALGuard here. If you have any
-* additional scopes you want the user to consent upon login, add them here as well.
-*/
+ * Set your default interaction type for MSALGuard here. If you have any
+ * additional scopes you want the user to consent upon login, add them here as well.
+ */
 export function MSALGuardConfigFactory(): MsalGuardConfiguration {
   return {
-      interactionType: InteractionType.Redirect,
-      authRequest: loginRequest
+    interactionType: InteractionType.Redirect,
+    authRequest: loginRequest,
   };
 }
-
 
 @NgModule({
   declarations: [
@@ -105,7 +124,9 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     DaySuffixPipe,
     CollectUserInfoComponent,
     ClaimsDetailsComponent,
-    ReservationDetailsComponent
+    ReservationDetailsComponent,
+    RestaurantsComponent,
+    RestaurantDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -119,34 +140,36 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
       timeOut: 5000,
       positionClass: 'toast-top-right',
       preventDuplicates: true,
-    })
+    }),
   ],
-  providers: [DatePipe,
+  providers: [
+    DatePipe,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpInterceptorService,
-      multi: true
+      multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: MsalInterceptor,
-      multi: true
-  },
-  {
+      multi: true,
+    },
+    {
       provide: MSAL_INSTANCE,
-      useFactory: MSALInstanceFactory
-  },
-  {
+      useFactory: MSALInstanceFactory,
+    },
+    {
       provide: MSAL_GUARD_CONFIG,
-      useFactory: MSALGuardConfigFactory
-  },
-  {
+      useFactory: MSALGuardConfigFactory,
+    },
+    {
       provide: MSAL_INTERCEPTOR_CONFIG,
-      useFactory: MSALInterceptorConfigFactory
-  },
-  MsalService,
-  MsalGuard,
-  MsalBroadcastService,],
-  bootstrap: [AppComponent, MsalRedirectComponent]
+      useFactory: MSALInterceptorConfigFactory,
+    },
+    MsalService,
+    MsalGuard,
+    MsalBroadcastService,
+  ],
+  bootstrap: [AppComponent, MsalRedirectComponent],
 })
-export class AppModule { }
+export class AppModule {}
