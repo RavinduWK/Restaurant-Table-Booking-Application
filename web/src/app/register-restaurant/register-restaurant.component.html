@@ -11,54 +11,191 @@
 
   <!-- Step 1: Choose Plan -->
   <div class="form-step active" id="step1">
-    <h2>Choose a Plan</h2>
-    <div class="plan">
-      <input type="radio" id="basic" name="plan" value="basic" />
-      <label for="basic">Basic Plan - $10/month</label>
+    <div class="pricing-container">
+      <h1>Pricing plans</h1>
+      <p>StartMA features that will help your company scale faster</p>
+      <div class="billing-toggle">
+        <label>
+          <input type="checkbox" id="billing-toggle" />
+          <span class="toggle-label">Bill Monthly</span>
+          <span class="toggle-label">Bill Annually (10% off)</span>
+        </label>
+      </div>
+      <div class="pricing-plans">
+        <div class="plan free-plan">
+          <div class="plan-content">
+            <h3>Basic</h3>
+
+            <ul>
+              <li>Table Booking Feature</li>
+              <li>Clients can book tables</li>
+              <li>User Account Management</li>
+              <li>Reservation Management</li>
+              <li>Email Notification System</li>
+            </ul>
+          </div>
+          <div class="price">
+            <h2>$10</h2>
+            <p>/month</p>
+          </div>
+          <button (click)="nextStep()">Get Started</button>
+        </div>
+        <div class="plan standard-plan">
+          <div class="plan-content">
+            <h3>Standard</h3>
+            <ul>
+              <li>All Basic Plan features</li>
+              <li>Menu Display</li>
+              <li>Menu and Event Information Accessibility</li>
+            </ul>
+          </div>
+          <div class="price">
+            <h2>$20</h2>
+            <p>/month</p>
+          </div>
+          <button (click)="nextStep()">Get Started</button>
+        </div>
+        <div class="plan premium-plan">
+          <div class="plan-content">
+            <h3>Premium</h3>
+            <ul>
+              <li>All Standard Plan features</li>
+              <li>Chef Information</li>
+              <li>Event Information</li>
+              <li>Analytics Dashboard for Admins</li>
+              <li>Multi-Branch Support</li>
+            </ul>
+          </div>
+          <div class="price">
+            <h2>$30</h2>
+            <p>/month</p>
+          </div>
+          <button (click)="nextStep()">Get Started</button>
+        </div>
+      </div>
+      <!-- Feature Comparison Matrix -->
+      <div class="comparison-matrix">
+        <h2>Compare plans</h2>
+        <table>
+          <thead>
+            <tr>
+              <th class="th-features">Features</th>
+              <th>Basic</th>
+              <th>Standard</th>
+              <th>Premium</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="th-features">Table Booking Feature</td>
+              <td>&check;</td>
+              <td>&check;</td>
+              <td>&check;</td>
+            </tr>
+            <tr>
+              <td class="th-features">Clients can book tables</td>
+              <td>&check;</td>
+              <td>&check;</td>
+              <td>&check;</td>
+            </tr>
+            <tr>
+              <td class="th-features">User Account Management</td>
+              <td>&check;</td>
+              <td>&check;</td>
+              <td>&check;</td>
+            </tr>
+            <tr>
+              <td class="th-features">Reservation Management</td>
+              <td>&check;</td>
+              <td>&check;</td>
+              <td>&check;</td>
+            </tr>
+            <tr>
+              <td class="th-features">Email Notification System</td>
+              <td>&check;</td>
+              <td>&check;</td>
+              <td>&check;</td>
+            </tr>
+            <tr>
+              <td class="th-features">Menu Display</td>
+              <td></td>
+              <td>&check;</td>
+              <td>&check;</td>
+            </tr>
+            <tr>
+              <td class="th-features">
+                Menu and Event Information Accessibility
+              </td>
+              <td></td>
+              <td>&check;</td>
+              <td>&check;</td>
+            </tr>
+            <tr>
+              <td class="th-features">Chef Information</td>
+              <td></td>
+              <td></td>
+              <td>&check;</td>
+            </tr>
+            <tr>
+              <td class="th-features">Event Information</td>
+              <td></td>
+              <td></td>
+              <td>&check;</td>
+            </tr>
+            <tr>
+              <td class="th-features">Analytics Dashboard for Admins</td>
+              <td></td>
+              <td></td>
+              <td>&check;</td>
+            </tr>
+            <tr>
+              <td class="th-features">Multi-Branch Support</td>
+              <td></td>
+              <td></td>
+              <td>&check;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div class="plan">
-      <input type="radio" id="standard" name="plan" value="standard" />
-      <label for="standard">Standard Plan - $20/month</label>
-    </div>
-    <div class="plan">
-      <input type="radio" id="premium" name="plan" value="premium" />
-      <label for="premium">Premium Plan - $30/month</label>
-    </div>
-    <button (click)="nextStep()" class="next-btn">Next</button>
   </div>
 
   <!-- Step 2: Registration Details -->
   <div class="form-step" id="step2">
-    <h2>Registration Details</h2>
-    <form>
-      <div class="form-group">
-        <label for="restaurant-name">Restaurant Name</label>
-        <input
-          type="text"
-          id="restaurant-name"
-          name="restaurant-name"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label for="owner-name">Owner's Name</label>
-        <input type="text" id="owner-name" name="owner-name" required />
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required />
-      </div>
-      <div class="form-group">
-        <label for="phone">Phone</label>
-        <input type="tel" id="phone" name="phone" required />
-      </div>
-      <div class="form-group">
-        <label for="address">Address</label>
-        <textarea id="address" name="address" required></textarea>
-      </div>
-      <button (click)="prevStep()" class="prev-btn">Previous</button>
-      <button (click)="nextStep()" class="next-btn">Next</button>
-    </form>
+    <div class="registration">
+      <h2>Registration Details</h2>
+      <form>
+        <div class="form-group">
+          <label for="restaurant-name">Restaurant Name</label>
+          <input
+            type="text"
+            id="restaurant-name"
+            name="restaurant-name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="owner-name">Owner's Name</label>
+          <input type="text" id="owner-name" name="owner-name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" required />
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <textarea id="address" name="address" required></textarea>
+        </div>
+        <div class="action-buttons">
+          <button (click)="prevStep()" class="prev-btn">Previous</button>
+          <button (click)="nextStep()" class="next-btn">Next</button>
+        </div>
+      </form>
+    </div>
   </div>
 
   <!-- Step 3: Payment -->
@@ -81,8 +218,10 @@
         <label for="cvv">CVV</label>
         <input type="text" id="cvv" name="cvv" required />
       </div>
-      <button (click)="prevStep()" class="prev-btn">Previous</button>
-      <button (click)="nextStep()" class="next-btn">Next</button>
+      <div class="action-buttons">
+        <button (click)="prevStep()" class="prev-btn">Previous</button>
+        <button (click)="nextStep()" class="next-btn">Next</button>
+      </div>
     </form>
   </div>
 
@@ -90,8 +229,7 @@
   <div class="form-step" id="step4">
     <h2>Confirmation</h2>
     <p>
-      Thank you for registering your restaurant with us! Your registration is
-      now complete.
+      Click finish to submit the registration details. We will contact you soon.
     </p>
     <button (click)="prevStep()" class="prev-btn">Previous</button>
     <button class="finish-btn">Finish</button>

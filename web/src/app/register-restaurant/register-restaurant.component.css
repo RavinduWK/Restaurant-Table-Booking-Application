@@ -15,7 +15,6 @@ body {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 600px;
 }
 
 h1 {
@@ -40,7 +39,7 @@ h1 {
 }
 
 .step.active {
-  background-color: #007bff;
+  background-color: #ce1212;
   color: #fff;
 }
 
@@ -77,7 +76,7 @@ h1 {
   margin-right: 10px;
 }
 
-button {
+.pricing-plans button {
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
@@ -104,4 +103,187 @@ button.finish-btn {
 
 button.finish-btn:hover {
   background-color: #218838;
+}
+.pricing-container {
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.pricing-container h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.pricing-container p {
+  font-size: 1.2em;
+  color: #6c757d;
+  margin-bottom: 30px;
+}
+
+.billing-toggle {
+  margin-bottom: 30px;
+}
+
+.billing-toggle label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.billing-toggle input[type="checkbox"] {
+  display: none;
+}
+
+.billing-toggle .toggle-label {
+  padding: 10px 20px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 5px;
+  font-size: 1em;
+}
+
+.pricing-plans {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.plan {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.plan:hover {
+  transform: translateY(-10px);
+}
+
+.plan-content {
+  flex-grow: 1;
+}
+
+.plan h3 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+.plan h2 {
+  font-size: 2.4em;
+  color: #8b2b11;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.plan p {
+  font-size: 1em;
+  color: #6c757d;
+  margin-bottom: 20px;
+}
+
+.plan .price {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.plan ul {
+  list-style: square;
+  padding-left: 30px;
+  margin-bottom: 20px;
+}
+
+.plan ul li {
+  font-size: 1em;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.plan button {
+  background-color: #f7ae1d;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 12px;
+  font-size: 1em;
+  cursor: pointer;
+
+  width: 80%;
+  transition: background-color 0.3s ease;
+}
+
+.plan button:hover {
+  background-color: #0056b3;
+}
+
+.free-plan {
+  background: linear-gradient(135deg, #fceff9 0%, #f7d6e0 100%);
+}
+
+.standard-plan {
+  background: linear-gradient(135deg, #eef3fd 0%, #d5e0fb 100%);
+}
+
+.premium-plan {
+  background: linear-gradient(135deg, #e8f9fc 0%, #c8e9f3 100%);
+}
+
+.comparison-matrix {
+  margin-top: 30px;
+}
+
+.comparison-matrix h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.comparison-matrix table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.comparison-matrix th,
+.comparison-matrix td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.comparison-matrix th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.comparison-matrix .th-features {
+  text-align: left;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.action-buttons button {
+  border-radius: 5px;
+  padding: 10px 25px;
+}
+
+.next-btn {
+  background-color: #ce1212;
+  color: white;
+}
+
+.prev-btn {
+  background-color: white;
+  color: #ce1212;
+  border: 1px solid #ce1212;
 }
