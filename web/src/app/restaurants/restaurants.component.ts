@@ -31,8 +31,8 @@ export class RestaurantsComponent {
     });
   }
 
-  navigateToDetailsPage(restaurantId: number) {
-    console.log('Navigate to details page', restaurantId);
-    this.router.navigate(['restaurants/' + restaurantId]);
+  navigateToDetailsPage(restaurant: Restaurant): void {
+    this.restaurantService.selectedRestaurant = restaurant;
+    this.router.navigate(['restaurants/' + restaurant.id]);
   }
 }
