@@ -26,7 +26,8 @@ const routes: Routes = [
   { path: 'chefs', component: ChefsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'restaurants', component: RestaurantsComponent },
-  { path: 'restaurants/:restaurant-id', component: RestaurantDetailsComponent },
+  { path: 'restaurants', component: RestaurantsComponent },
+  { path: 'restaurants/register', component: RestaurantDetailsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'gallery', component: GalleryComponent },
   {
