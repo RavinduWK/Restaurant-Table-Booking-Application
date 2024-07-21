@@ -14,6 +14,7 @@ import { ReservationDetailsComponent } from './reservation-details/reservation-d
 import { SuperAdminAuthGuard } from './core/super-admin.guard copy';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { RestaurantDetailsComponent } from './restaurant-details/restaurant-details.component';
+import { RegisterRestaurantComponent } from './register-restaurant/register-restaurant.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: 'chefs', component: ChefsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'restaurants', component: RestaurantsComponent },
-  { path: 'restaurants/:restaurant-id', component: RestaurantDetailsComponent },
+  { path: 'restaurants', component: RestaurantsComponent },
+  { path: 'restaurants/register', component: RegisterRestaurantComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'gallery', component: GalleryComponent },
   {

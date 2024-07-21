@@ -48,6 +48,7 @@ import { ClaimsDetailsComponent } from './claims-details/claims-details.componen
 import { ReservationDetailsComponent } from './reservation-details/reservation-details.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { RestaurantDetailsComponent } from './restaurant-details/restaurant-details.component';
+import { RegisterRestaurantComponent } from './register-restaurant/register-restaurant.component';
 
 /**
  * Here we pass the configuration parameters to create an MSAL instance.
@@ -127,6 +128,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     ReservationDetailsComponent,
     RestaurantsComponent,
     RestaurantDetailsComponent,
+    RegisterRestaurantComponent,
   ],
   imports: [
     BrowserModule,
