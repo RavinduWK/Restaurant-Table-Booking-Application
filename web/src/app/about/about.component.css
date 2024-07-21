@@ -1,0 +1,141 @@
+.about-container {
+  background-color: #fff;
+  width: 100%;
+  text-align: center;
+}
+
+.about-image {
+  background-size: contain; /* Ensure the entire image fits within the div */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+}
+
+.call-us {
+  background: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Add a semi-transparent background for better readability */
+  color: white;
+  border-radius: 5px;
+  bottom: 100px;
+  left: 60px;
+}
+
+.about-container h1 {
+  margin-bottom: 20px;
+}
+
+.about-container h2 {
+  margin-bottom: 10px;
+  color: #ce1212;
+}
+
+.about-container p {
+  font-size: 1.1em;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.about-container ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.about-container ul li {
+  font-size: 1.1em;
+  color: #000000;
+  margin-bottom: 10px;
+  padding: 0 0 8px 0px;
+}
+
+.mission {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  width: 100%;
+  padding: 25px 100px;
+  background-color: rgba(0, 0, 0, 0.899);
+  border-radius: 5px;
+}
+
+.mission p {
+  color: rgba(255, 255, 255, 0.554);
+  font-size: 1.15em;
+}
+
+.team-members {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.team-member {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.team-member:hover {
+  transform: translateY(-10px);
+}
+
+.team-member img.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.team-member h3 {
+  font-size: 1.2em;
+  margin-bottom: 4px;
+}
+
+.team-member h4 {
+  font-size: 0.9em;
+  color: #323131;
+  margin-bottom: 20px;
+}
+
+.team-member p {
+  font-size: 1em;
+  color: #454141dd;
+  margin-bottom: 10px;
+}
+
+.data {
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+}
+
+.data-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.values {
+  padding: 10px;
+}
+
+.values h2 {
+  text-align: left;
+}
+
+.history h2 {
+  text-align: left;
+}
+
+.history p {
+  text-align: justify;
+}
