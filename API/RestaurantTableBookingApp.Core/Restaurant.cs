@@ -31,5 +31,11 @@ public partial class Restaurant
     [MaxLength(500)]
     public string? ImageUrl { get; set; }
 
+    public bool hasBranches { get; set; }
+
     public virtual ICollection<RestaurantBranch> RestaurantBranches { get; set; } = new List<RestaurantBranch>();
+    public ICollection<Menu> Menus { get; set; }
+    public ICollection<Chef> Chefs { get; set; }
+    public ICollection<Event> Events { get; set; }
+    public ICollection<Review> Reviews { get; set; }
 }

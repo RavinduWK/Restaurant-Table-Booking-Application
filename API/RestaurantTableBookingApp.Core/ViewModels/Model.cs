@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace RestaurantTableBookingApp.Core.ViewModels
         public string? Phone { get; set; }
         public string? Email { get; set; }
         public string? ImageUrl { get; set; }
+        public bool hasBranches { get; set; }
     }
 
     public class RestaurantBranchModel
@@ -78,6 +80,43 @@ namespace RestaurantTableBookingApp.Core.ViewModels
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
+    }
+    public class Menu
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+        public string Category { get; set; }
+        public int RestaurantId { get; set; }
+    }
+    public class Chef
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Bio { get; set; }
+        public string Speciality { get; set; }
+        public string ImageUrl { get; set; }
+        public int RestaurantId { get; set; }
+    }
+    public class Event
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string ImageUrl { get; set; }
+        public DateTime Date { get; set; }
+        public decimal Price { get; set; }
+        public int RestaurantId { get; set; }  
+    }
+    public class Review
+    {
+        public int Id { get; set; }
+        public string ReviewerName { get; set; }
+        public string Comment { get; set; }
+        public int Rating { get; set; }  // A rating out of 5
+        public DateTime Date { get; set; }
+        public int RestaurantId { get; set; }  // Foreign key to Restaurant
     }
 }
 
