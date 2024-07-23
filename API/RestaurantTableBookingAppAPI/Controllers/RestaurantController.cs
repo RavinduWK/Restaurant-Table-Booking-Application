@@ -41,15 +41,49 @@ namespace RestaurantTableBookingApp.API.Controllers
             return Ok(branches);
         }
 
-        [HttpGet("diningTables/{branchId}")]
-        public async Task<IActionResult> GetGetDiningTablesByBranchAsync(int branchId)
+        [HttpGet("menu/{restaurantId}")]
+        public async Task<IActionResult> GetRestaurantMenuByRestaurantIdAsync(int restaurantId)
         {
-            var diningTables = await _restaurantService.GetDiningTablesByBranchAsync(branchId);
-            if (diningTables == null)
+            var menu = await _restaurantService.GetRestaurantMenuByRestaurantIdAsync(restaurantId);
+            if (menu == null)
             {
                 return NotFound(); //404
             }
-            return Ok(diningTables);
+            return Ok(menu);
+        }
+
+        [HttpGet("chefs/{restaurantId}")]
+        public async Task<IActionResult> GetRestaurantChefsByRestaurantIdAsync(int restaurantId)
+        {
+            var chefs = await _restaurantService.GetRestaurantChefsByRestaurantIdAsync(restaurantId);
+            if (chefs == null)
+            {
+                return NotFound(); //404
+            }
+            return Ok(chefs);
+        }
+
+
+        [HttpGet("events/{restaurantId}")]
+        public async Task<IActionResult> GetRestaurantEventsByRestaurantIdAsync(int restaurantId)
+        {
+            var events = await _restaurantService.GetRestaurantEventsByRestaurantIdAsync(restaurantId);
+            if (events == null)
+            {
+                return NotFound(); //404
+            }
+            return Ok(events);
+        }
+
+        [HttpGet("reviews/{restaurantId}")]
+        public async Task<IActionResult> GetRestaurantReviewsByRestaurantIdAsync(int restaurantId)
+        {
+            var reviews = await _restaurantService.GetRestaurantReviewsByRestaurantIdAsync(restaurantId);
+            if (reviews == null)
+            {
+                return NotFound(); //404
+            }
+            return Ok(reviews);
         }
 
         [HttpGet("diningTables/{branchId}/{date}")]

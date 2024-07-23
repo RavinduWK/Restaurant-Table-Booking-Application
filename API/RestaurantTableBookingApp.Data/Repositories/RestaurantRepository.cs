@@ -142,5 +142,74 @@ namespace RestaurantTableBookingApp.Data.Repositories
         {
             return _dbContext.Users.FirstOrDefaultAsync(f => f.Email.Equals(emailId));
         }
+
+        public async Task<IEnumerable<MenuModel>> GetRestaurantMenuByRestaurantIdAsync(int restaurantId)
+        {
+            var menu = await _dbContext.Menus
+                .Where(rb => rb.RestaurantId == restaurantId)
+                .Select(rb => new MenuModel()
+                {
+                    Id = rb.Id,
+                    Name= rb.Name,
+                    Description = rb.Description,
+                    Price = rb.Price,
+                    Category = rb.Category,
+                    RestaurantId = rb.RestaurantId
+                }).ToListAsync();
+
+            return menu;
+        }
+
+        public async Task<IEnumerable<ChefModel>> GetRestaurantChefsByRestaurantIdAsync(int restaurantId)
+        {
+            var chefs = await _dbContext.Chefs
+                .Where(rb => rb.RestaurantId == restaurantId)
+                .Select(rb => new ChefModel()
+                {
+                    Id = rb.Id,
+                    Name = rb.Name,
+                    Bio = rb.Bio,
+                    Speciality = rb.Speciality,
+                    ImageUrl = rb.ImageUrl,
+                    RestaurantId = rb.RestaurantId
+                }).ToListAsync();
+
+            return chefs;
+        }
+
+        public async Task<IEnumerable<EventModel>> GetRestaurantEventsByRestaurantIdAsync(int restaurantId)
+        {
+            var events = await _dbContext.Events
+                .Where(rb => rb.RestaurantId == restaurantId)
+                .Select(rb => new EventModel()
+                {
+                    Id = rb.Id,
+                    Title = rb.Title,
+                    Description = rb.Description,
+                    ImageUrl = rb.ImageUrl,
+                    Date = rb.Date,
+                    Price = rb.Price,
+                    RestaurantId = rb.RestaurantId
+                }).ToListAsync();
+
+            return events;
+        }
+
+        public async Task<IEnumerable<ReviewModel>> GetRestaurantReviewsByRestaurantIdAsync(int restaurantId)
+        {
+            var reviews = await _dbContext.Reviews
+                .Where(rb => rb.RestaurantId == restaurantId)
+                .Select(rb => new ReviewModel()
+                {
+                    Id = rb.Id,
+                    ReviewerName = rb.ReviewerName,
+                    Comment = rb.Comment,
+                    Rating = rb.Rating,
+                    Date = rb.Date,
+                    RestaurantId = rb.RestaurantId
+                }).ToListAsync();
+
+            return reviews;
+        }
     }
 }

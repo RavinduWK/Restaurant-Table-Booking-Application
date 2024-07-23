@@ -81,7 +81,7 @@ namespace RestaurantTableBookingApp.Core.ViewModels
         public string LastName { get; set; }
         public string Email { get; set; }
     }
-    public class Menu
+    public class MenuModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -90,7 +90,7 @@ namespace RestaurantTableBookingApp.Core.ViewModels
         public string Category { get; set; }
         public int RestaurantId { get; set; }
     }
-    public class Chef
+    public class ChefModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -99,7 +99,7 @@ namespace RestaurantTableBookingApp.Core.ViewModels
         public string ImageUrl { get; set; }
         public int RestaurantId { get; set; }
     }
-    public class Event
+    public class EventModel
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -109,7 +109,7 @@ namespace RestaurantTableBookingApp.Core.ViewModels
         public decimal Price { get; set; }
         public int RestaurantId { get; set; }  
     }
-    public class Review
+    public class ReviewModel
     {
         public int Id { get; set; }
         public string ReviewerName { get; set; }
