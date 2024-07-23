@@ -76,9 +76,9 @@ export class SearchRestaurantsComponent implements OnInit {
     this.restaurantService.GetRestaurants().subscribe((s) => {
       this.restaurants = s;
       this.filteredRestaurants = s;
-      this.selectRestaurant = s[0];
-      this.selectedRestaurantId = this.selectRestaurant.id;
-      this.getRestaurantBranches();
+      // this.selectRestaurant = s[0];
+      // this.selectedRestaurantId = this.selectRestaurant.id;
+      // this.getRestaurantBranches();
       console.log('Restaurants', this.restaurants);
     });
   }
@@ -90,6 +90,11 @@ export class SearchRestaurantsComponent implements OnInit {
         this.restaurantBranches = s;
         this.filterBranches(this.selectedRestaurantId);
       });
+  }
+
+  onRestaurantSelected(id: number) {
+    this.selectedRestaurantId = id;
+    this.getRestaurantBranches();
   }
 
   onBranchSelected(id: number) {

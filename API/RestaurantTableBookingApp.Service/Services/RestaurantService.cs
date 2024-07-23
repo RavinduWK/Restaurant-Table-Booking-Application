@@ -36,5 +36,21 @@ namespace RestaurantTableBookingApp.Service.Services
         {
             return restaurantRepository.GetDiningTablesByBranchAndDateAsync(branchId, date);
         }
+        public Task<IEnumerable<MenuModel>> GetRestaurantMenuByRestaurantIdAsync(int restaurantId)
+        {
+            return restaurantRepository.GetRestaurantMenuByRestaurantIdAsync(restaurantId);
+        }
+        public Task<IEnumerable<ChefModel>> GetRestaurantChefsByRestaurantIdAsync(int restaurantId)
+        {
+            return restaurantRepository.GetRestaurantChefsByRestaurantIdAsync(restaurantId);
+        }
+        public Task<IEnumerable<EventModel>> GetRestaurantEventsByRestaurantIdAsync(int restaurantId)
+        {
+            return restaurantRepository.GetRestaurantEventsByRestaurantIdAsync(restaurantId);
+        }
+        public Task<IEnumerable<ReviewModel>> GetRestaurantReviewsByRestaurantIdAsync(int restaurantId)
+        {
+            return restaurantRepository.GetRestaurantReviewsByRestaurantIdAsync(restaurantId);
+        }
     }
 }
