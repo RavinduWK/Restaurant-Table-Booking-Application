@@ -58,7 +58,7 @@
                   class="form-control"
                   id="restaurantSelect"
                   [(ngModel)]="selectedRestaurantId"
-                  (ngModelChange)="filterBranches($event)"
+                  (ngModelChange)="onRestaurantSelected($event)"
                 >
                   <option selected value="-1">Select a Restaurant</option>
                   <option
